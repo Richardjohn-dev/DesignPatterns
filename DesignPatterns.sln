@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimUDuckApp2", "SimUDuckApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPuzzleAdventureGame", "DesignPuzzleAdventureGame\DesignPuzzleAdventureGame.csproj", "{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter2", "Chapter2", "{A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
