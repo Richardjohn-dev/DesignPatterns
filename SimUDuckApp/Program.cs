@@ -5,7 +5,8 @@ namespace SimUDuckApp
     class Program
     {
         static void Main(string[] args)
-        {            
+        {       
+            // first implementations
             Duck mallard = new Mallard();
             mallard.PerformQuack();
             mallard.PerformFly();
