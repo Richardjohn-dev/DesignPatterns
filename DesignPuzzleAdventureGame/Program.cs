@@ -28,16 +28,28 @@ namespace DesignPuzzleAdventureGame
             WeaponBehaviour = wb;
         }
 
+        public abstract void Display();
         public void Fight() => WeaponBehaviour.UseWeapon();
     }
 
 
+    //https://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class?rq=1
+
+    public abstract class Rogue : Character
+    {
+        // abstract that implements abstract does not have to implement all methods
+    }
 
     public class Archer : Character
     {
         public Archer()
         {
             WeaponBehaviour = new BowAndArrowBehaviour();
+        }
+
+        public override void Display()
+        {
+            Console.WriteLine("I'm an archer.");
         }
     }
 
@@ -46,6 +58,10 @@ namespace DesignPuzzleAdventureGame
         public Warrior()
         {
             WeaponBehaviour = new SwordBehaviour();
+        }
+        public override void Display()
+        {
+            Console.WriteLine("I'm a warrior.");
         }
     }
 
