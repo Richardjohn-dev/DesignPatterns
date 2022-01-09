@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter1", "Chapter1", "{DC123469-E743-4500-86B9-B1BC450AA0BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimUDuckApp", "SimUDuckApp\SimUDuckApp.csproj", "{7AF50828-A69B-48EA-8C5E-714533DC9ABA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimUDuckApp", "SimUDuckApp\SimUDuckApp.csproj", "{7AF50828-A69B-48EA-8C5E-714533DC9ABA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimUDuckApp2", "SimUDuckApp2\SimUDuckApp2.csproj", "{FE1D8F66-C369-49EE-B0F5-6019714DC6F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimUDuckApp2", "SimUDuckApp2\SimUDuckApp2.csproj", "{FE1D8F66-C369-49EE-B0F5-6019714DC6F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPuzzleAdventureGame", "DesignPuzzleAdventureGame\DesignPuzzleAdventureGame.csproj", "{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPuzzleAdventureGame", "DesignPuzzleAdventureGame\DesignPuzzleAdventureGame.csproj", "{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter2", "Chapter2", "{A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherMonitorObserver", "WeatherMonitorObserver\WeatherMonitorObserver.csproj", "{19BA367C-5603-4468-99FD-ECB04D4D91BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BA367C-5603-4468-99FD-ECB04D4D91BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BA367C-5603-4468-99FD-ECB04D4D91BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BA367C-5603-4468-99FD-ECB04D4D91BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BA367C-5603-4468-99FD-ECB04D4D91BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{7AF50828-A69B-48EA-8C5E-714533DC9ABA} = {DC123469-E743-4500-86B9-B1BC450AA0BA}
 		{FE1D8F66-C369-49EE-B0F5-6019714DC6F7} = {DC123469-E743-4500-86B9-B1BC450AA0BA}
 		{CF1C6B7F-E802-461F-9E0A-E7E2ED19091A} = {DC123469-E743-4500-86B9-B1BC450AA0BA}
+		{19BA367C-5603-4468-99FD-ECB04D4D91BE} = {A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}
