@@ -6,13 +6,28 @@ namespace StarBuzzDecorator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Beverage beverage = new Espresso();
+            Console.WriteLine($" { beverage.GetDescription() }  ${ beverage.Cost() }");
+
+            Beverage beverage2 = new DarkRoast();
+            beverage2 = new Mocha(beverage2);
+            beverage2 = new Mocha(beverage2);
+            beverage2 = new Whip(beverage2);
+            Console.WriteLine($" { beverage2.GetDescription() }  ${ beverage2.Cost() }");
+
+
+            Beverage beverage3 = new HouseBlend();
+            beverage3 = new Soy(beverage3);
+            beverage3 = new Mocha(beverage3);
+            beverage3 = new Whip(beverage3);
+            Console.WriteLine($" { beverage3.GetDescription() }  ${ beverage3.Cost() }");
+
         }
     }
 
     public abstract class Beverage
     {
-        public string Description { get; set; } = "Unknown Beverage";
+        public virtual string Description { get; protected set; } = "Unknown Beverage";
 
         public string GetDescription()
         {
@@ -27,7 +42,9 @@ namespace StarBuzzDecorator
     public abstract class CondimentDecorator : Beverage
     {
         public Beverage Beverage { get; set; }
-        public abstract string GetDescription();
+        //public abstract string GetDescription();
+        //public abstract override string GetDescription { get; }
+        public abstract override string Description { get; }
     }
 
     public class HouseBlend : Beverage
@@ -89,12 +106,14 @@ namespace StarBuzzDecorator
 
         public Mocha(Beverage beverage)
         {
-            this.Beverage = beverage;
+            Beverage = beverage;
         }
-        public override string GetDescription()
-        {
-            return Beverage.GetDescription() + ", Mocha";
-        }
+        //public override string Description
+        //{
+        //    return Beverage.GetDescription() + ", Mocha";
+        //}
+
+        public override string Description => $"{Beverage.Description}, {nameof(Mocha)}";
 
         public override double Cost()
         {
@@ -104,15 +123,12 @@ namespace StarBuzzDecorator
 
     public class SteamedMilk : CondimentDecorator
     {
-
         public SteamedMilk(Beverage beverage)
         {
-            this.Beverage = beverage;
+            Beverage = beverage;
         }
-        public override string GetDescription()
-        {
-            return Beverage.GetDescription() + ", Steamed Milk";
-        }
+
+        public override string Description => $"{Beverage.Description}, {nameof(SteamedMilk)}";
 
         public override double Cost()
         {
@@ -124,13 +140,10 @@ namespace StarBuzzDecorator
     {
         public Soy(Beverage beverage)
         {
-            this.Beverage = beverage;
+            Beverage = beverage;
         }
 
-        public override string GetDescription()
-        {
-            return Beverage.GetDescription() + ", Soy";
-        }
+        public override string Description => $"{Beverage.Description}, {nameof(Soy)}";
 
         public override double Cost()
         {
@@ -144,13 +157,9 @@ namespace StarBuzzDecorator
 
         public Whip(Beverage beverage)
         {
-            this.Beverage = beverage;
+            Beverage = beverage;
         }
-
-        public override string GetDescription()
-        {
-            return Beverage.GetDescription() + ", Whip";
-        }
+        public override string Description => $"{Beverage.Description}, {nameof(Whip)}";
 
         public override double Cost()
         {
