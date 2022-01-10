@@ -22,6 +22,7 @@ namespace WeatherStationRefactored
 
         public void Update()
         {
+            // pull from subject
             var latestTemp = _weatherData.GetTemperature();
           
             _tempSum += latestTemp;
@@ -32,6 +33,7 @@ namespace WeatherStationRefactored
 
             if (latestTemp < _minTemp)
                 _minTemp = latestTemp;
+
             Display();
         }
 
