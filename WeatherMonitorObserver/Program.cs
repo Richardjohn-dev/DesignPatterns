@@ -9,7 +9,16 @@ namespace WeatherMonitorObserver
         static void Main(string[] args)
         {
 
+            WeatherData weatherData = new();
 
+            CurrentConditionsDisplay currentConditions = new(weatherData);
+            StatisticsDisplay statisticsDisplay = new(weatherData);
+            ForecastDisplay forecastDisplay = new(weatherData);
+            HeatIndexDisplay heatIndexDisplay = new(weatherData);
+
+            weatherData.SetMeasurements(80, 65, 30.4f);
+            weatherData.SetMeasurements(82, 70, 29.2f);
+            weatherData.SetMeasurements(78, 90, 29.2f);
 
             Console.ReadLine();
         }
@@ -21,9 +30,9 @@ namespace WeatherMonitorObserver
     public class WeatherData : ISubject
     {
         private  List<IObserver> _observers;
-        private  float _temperature;
-        private  float _humidity;
-        private  float _pressure;
+        private  double _temperature;
+        private  double _humidity;
+        private  double _pressure;
 
         public WeatherData()
         {
@@ -57,7 +66,7 @@ namespace WeatherMonitorObserver
             NotifyObservers();
         }
 
-        public void SetMeasurements(float temp, float humidity, float pressure)
+        public void SetMeasurements(double temp, double humidity, double pressure)
         {
             this._temperature = temp;
             this._humidity = humidity;
@@ -68,9 +77,9 @@ namespace WeatherMonitorObserver
 
     public class CurrentConditionsDisplay : IObserver, IDisplayElement
     {
-        private readonly WeatherData _weatherData;
-        private float _temperature;
-        private float _humidity;
+        private readonly WeatherData _weatherData; // not used, but probably used in the future to unregister
+        private double _temperature;
+        private double _humidity;
         public CurrentConditionsDisplay(WeatherData weatherData)
         {
             _weatherData = weatherData;
@@ -80,7 +89,7 @@ namespace WeatherMonitorObserver
         {
             Console.WriteLine($"Current conditions {_temperature} degrees and {_humidity}% humidity");
         }
-        void IObserver.Update(float temp, float humidity, float pressure)
+        void IObserver.Update(double temp, double humidity, double pressure)
         {
             this._temperature = temp;
             this._humidity = humidity;
@@ -91,8 +100,8 @@ namespace WeatherMonitorObserver
     public class ForecastDisplay : IObserver, IDisplayElement
     {
         private readonly WeatherData _weatherData;
-        private float _currentPressure = 29.92f;
-        private float _lastPressure;
+        private double _currentPressure = 29.92f;
+        private double _lastPressure;
         public ForecastDisplay(WeatherData weatherData)
         {
             _weatherData = weatherData;
@@ -115,7 +124,7 @@ namespace WeatherMonitorObserver
             }
 
         }
-        void IObserver.Update(float temp, float humidity, float pressure)
+        void IObserver.Update(double temp, double humidity, double pressure)
         {
             this._lastPressure = _currentPressure;
             this._currentPressure = pressure;
@@ -127,9 +136,9 @@ namespace WeatherMonitorObserver
     public class StatisticsDisplay : IObserver, IDisplayElement
     {
         private readonly WeatherData _weatherData;
-        private float _maxTemp = 0.0f;
-        private float _minTemp = 200;
-        private float _tempSum = 0.0f;
+        private double _maxTemp = 0.0f;
+        private double _minTemp = 200;
+        private double _tempSum = 0.0f;
         private int _numReadings;
 
         public StatisticsDisplay(WeatherData weatherData)
@@ -141,7 +150,7 @@ namespace WeatherMonitorObserver
         {
             Console.WriteLine($"Avg/Max/Min temperature = { _tempSum / _numReadings } / { _maxTemp } / { _minTemp }");
         }
-        void IObserver.Update(float temp, float humidity, float pressure)
+        void IObserver.Update(double temp, double humidity, double pressure)
         {
             _tempSum += temp;
             _numReadings++;
@@ -160,6 +169,42 @@ namespace WeatherMonitorObserver
         }
     }
 
+    public class HeatIndexDisplay : IObserver, IDisplayElement
+    {
+        private readonly WeatherData _weatherData;
+        private double _heatIndex = 0.0f;      
+
+        public HeatIndexDisplay(WeatherData weatherData)
+        {
+            _weatherData = weatherData;
+            weatherData.RegisterObserver(this);
+        }
+        public void Display()
+        {
+            Console.WriteLine("Heat index is " + _heatIndex);
+        }
+        public void Update(double temp, double humidity, double pressure)
+        {
+            _heatIndex = ComputeHeatIndex(temp, humidity);
+            Display();
+        }
+        private static double ComputeHeatIndex(double t, double rh)
+        {
+            double index = (16.923 + (0.185212 * t) + (5.37941 * rh) - (0.100254 * t * rh)
+                            + (0.00941695 * (t * t)) + (0.00728898 * (rh * rh))
+                            + (0.000345372 * (t * t * rh)) - (0.000814971 * (t * rh * rh)) +
+                            (0.0000102102 * (t * t * rh * rh)) - (0.000038646 * (t * t * t)) + (0.0000291583 *
+                            (rh * rh * rh)) + (0.00000142721 * (t * t * t * rh)) +
+                            (0.000000197483 * (t * rh * rh * rh)) - (0.0000000218429 * (t * t * t * rh * rh)) +
+                            0.000000000843296 * (t * t * rh * rh * rh)) -
+                           (0.0000000000481975 * (t * t * t * rh * rh * rh));
+            return index;
+        }
+    }
+
+
+
+
     public interface ISubject
     {
         void RegisterObserver(IObserver o);
@@ -170,7 +215,7 @@ namespace WeatherMonitorObserver
 
     public interface IObserver
     {
-        void Update(float temp, float humidity, float pressure);
+        void Update(double temp, double humidity, double pressure);
     }
 
     public interface IDisplayElement

@@ -6,7 +6,7 @@ namespace DesignPuzzleAdventureGame
     {
         static void Main(string[] args)
         {
-
+            // random exercise in the book practice
 
             Character archer = new Archer();
             archer.Fight();
@@ -32,8 +32,6 @@ namespace DesignPuzzleAdventureGame
         public void Fight() => WeaponBehaviour.UseWeapon();
     }
 
-
-    //https://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class?rq=1
 
     public abstract class Rogue : Character
     {
