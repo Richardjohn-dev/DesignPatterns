@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter3", "Chapter3", "{7A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarBuzzDecorator", "StarBuzzDecorator\StarBuzzDecorator.csproj", "{1AD32991-B02A-4AE9-B120-D796D730A3BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarBuzzDecoratorRefactored", "StarBuzzDecoratorRefactored\StarBuzzDecoratorRefactored.csproj", "{0430B70B-4838-41FE-916B-06B496861D90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{1AD32991-B02A-4AE9-B120-D796D730A3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AD32991-B02A-4AE9-B120-D796D730A3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AD32991-B02A-4AE9-B120-D796D730A3BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0430B70B-4838-41FE-916B-06B496861D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0430B70B-4838-41FE-916B-06B496861D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0430B70B-4838-41FE-916B-06B496861D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0430B70B-4838-41FE-916B-06B496861D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{19BA367C-5603-4468-99FD-ECB04D4D91BE} = {A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}
 		{DCB7D535-9884-4104-9230-A880C00E0ADC} = {A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}
 		{1AD32991-B02A-4AE9-B120-D796D730A3BC} = {7A856D5F-9794-465C-B061-10CFE4FC868F}
+		{0430B70B-4838-41FE-916B-06B496861D90} = {7A856D5F-9794-465C-B061-10CFE4FC868F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}
