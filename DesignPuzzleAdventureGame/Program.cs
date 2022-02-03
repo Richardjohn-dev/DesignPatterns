@@ -33,10 +33,36 @@ namespace DesignPuzzleAdventureGame
     }
 
 
-    public abstract class Rogue : Character
+    public interface IWeaponBehaviour
+    {   
+        void UseWeapon();
+    }
+
+
+    // a Warrior *IS-A* character
+    // concrete implementation of character.
+    public class Warrior : Character
+    {
+        public Warrior()
+        {
+            WeaponBehaviour = new SwordBehaviour();
+        }
+        public override void Display()
+        {
+            Console.WriteLine("I'm a warrior.");
+        }
+    }
+    // a Rogue *IS-A* character
+    public class Rogue : Character
     {
         // abstract that implements abstract does not have to implement all methods
+        public override void Display()
+        {
+            throw new NotImplementedException();
+        }
     }
+
+
 
     public class Archer : Character
     {
@@ -50,23 +76,8 @@ namespace DesignPuzzleAdventureGame
             Console.WriteLine("I'm an archer.");
         }
     }
+   
 
-    public class Warrior : Character
-    {
-        public Warrior()
-        {
-            WeaponBehaviour = new SwordBehaviour();
-        }
-        public override void Display()
-        {
-            Console.WriteLine("I'm a warrior.");
-        }
-    }
-
-    public interface IWeaponBehaviour
-    {
-        void UseWeapon();
-    }
     public class AxeBehaviour : IWeaponBehaviour
     {
         public void UseWeapon()

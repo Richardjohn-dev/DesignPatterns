@@ -9,33 +9,47 @@ namespace SimUDuckApp2
         //// Starts from 
         // 'What a shame to have all this dynamic talent built into our ducks and not be using it! Imagine you want to set the duck’s behavior type through a setter method on the Duck class, rather than by instantiating it in the duck’s constructor.
 
-        static void Main(string[] args)
-        {
-            // first implementations
-            Duck mallard = new Mallard();
-            mallard.PerformQuack();
-            mallard.PerformFly();
+static void Main(string[] args)
+{
+    Console.WriteLine("Welcome to the annual who gives a flying Duck show..");
+    Console.WriteLine("The First Duck comes along..");
+    Console.WriteLine();
 
-            // second implementations
-            Duck modelDuck = new ModelDuck();
-            modelDuck.PerformFly();
-            modelDuck.PerformQuack();
-            modelDuck.SetFlyBehaviour(new FlyRocketPowered());
-            modelDuck.PerformFly();
+    // first duck
+    Duck mallard = new Mallard();
+    mallard.Display();
+    mallard.PerformQuack();
+    mallard.PerformFly();
 
-            Console.ReadLine();
-        }
-           
+    Console.WriteLine();
+    Console.WriteLine("Second Duck");
+    Console.WriteLine("..............");
+
+    // second duck
+    Duck modelDuck = new ModelDuck();
+    modelDuck.Display();
+    modelDuck.PerformFly();
+    modelDuck.PerformQuack();
+
+    // inject new behaviours at runtime through the setter
+    modelDuck.SetQuackBehaviour(new MegaphoneQuack());
+    modelDuck.PerformQuack();
+    modelDuck.SetFlyBehaviour(new FlyRocketPowered());
+    modelDuck.PerformFly();
+
+    Console.ReadLine();
+}
+
+        // Context
         public abstract class Duck
         {
             public IFlyBehaviour FlyBehaviour { get; set; }
             public IQuackBehaviour QuackBehaviour { get; set; }
 
             public abstract void Display();
-            public void PerformQuack() => QuackBehaviour.Quack();      // delegated
-            public void PerformFly() => FlyBehaviour.Fly();       // delegated
-                                                                  // Flex..
-                                                                  // Swim..
+            public void PerformQuack() => QuackBehaviour.Quack();
+            public void PerformFly() => FlyBehaviour.Fly();
+
 
             public void SetFlyBehaviour(IFlyBehaviour fb)
             {
@@ -47,58 +61,8 @@ namespace SimUDuckApp2
             }
         }
 
-        // new
-        public class ModelDuck : Duck
-        {
-            public ModelDuck()
-            {
-                FlyBehaviour = new CantFly();
-                QuackBehaviour = new NoQuack();
-            }
-            public override void Display()
-            {
-                Console.WriteLine("I'm a model duck.");
-            }
-        }
-
-        public class FlyRocketPowered : IFlyBehaviour
-        {
-            public void Fly()
-            {
-                Console.WriteLine("I'm flying with a rocket...To infinity and beyond!!");
-            }
-        }
-
-        public class Mallard : Duck
-        {
-            public Mallard()
-            {
-                FlyBehaviour = new FlyWithWings();
-                QuackBehaviour = new LoudQuack();
-            }
-
-            public override void Display()
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public class FlyWithWings : IFlyBehaviour
-        {
-            public void Fly()
-            {
-                Console.WriteLine("is flying");
-            }
-        }
-
-        public class CantFly : IFlyBehaviour
-        {
-            public void Fly()
-            {
-                Console.WriteLine("WTF nothing happening, I'm not designed for this. Lazy.");
-            }
-        }
-
+        #region Strategies
+        // Strategies
         public interface IFlyBehaviour
         {
             void Fly();
@@ -108,36 +72,93 @@ namespace SimUDuckApp2
         {
             void Quack();
         }
+        #endregion
 
-        public class StandardQuack : IQuackBehaviour
-        {
-            public void Quack()
-            {
-                Console.WriteLine("Gives out a recognisably standard duck quack");
-            }
+#region ConcreteQuackStrategies
+public class StandardQuack : IQuackBehaviour
+{
+    public void Quack() => Console.WriteLine("Does a bog standard duck quack");
+}
+public class LoudQuack : IQuackBehaviour
+{
+    public void Quack() => Console.WriteLine("Bellows a huge deafening quack");
+}
+public class SqueakyQuack : IQuackBehaviour
+{
+    public void Quack() => Console.WriteLine("Squeaks out a pathetic quack");
+}
+public class NoQuack : IQuackBehaviour
+{
+    public void Quack() => Console.WriteLine("Cant quack..pathetic");
+}
+public class MegaphoneQuack : IQuackBehaviour
+{
+    public MegaphoneQuack() => Console.WriteLine("Whats this.. he's got a Megaphone..");
+    public void Quack()
+    {
+        Console.WriteLine("****HOOOOOOOOONK***");
+        Console.WriteLine("****HOOOOOOOOOOOOOOONK***");
+        Console.WriteLine("****HOOOOOOOOOOOOOOOOOOOONK***");
+    }
+}
 
-        }
-        public class LoudQuack : IQuackBehaviour
-        {
-            public void Quack()
-            {
-                Console.WriteLine("Bellows a huge deafening quack");
-            }
-        }
+#endregion
 
-        public class SqueakyQuack : IQuackBehaviour
-        {
-            public void Quack()
-            {
-                Console.WriteLine("Squeaks out a pathetic quack");
-            }
-        }
-        public class NoQuack : IQuackBehaviour
-        {
-            public void Quack()
-            {
-                Console.WriteLine("Cant quack..pathetic");
-            }
-        }
+#region ConcreteFlyStrategies
+public class FlyWithWings : IFlyBehaviour
+{
+    public void Fly()
+    {
+        Console.WriteLine("Shows off some impressive flying..");
+    }
+}
+public class CantFly : IFlyBehaviour
+{
+    public void Fly()
+    {
+        Console.WriteLine("He just cant fly... Lazy.");
+    }
+}
+public class FlyRocketPowered : IFlyBehaviour
+{
+    public FlyRocketPowered()
+    {
+        Console.WriteLine("Straps on a rocket pack..");
+    }
+    public void Fly()
+    {
+        Console.WriteLine("He's off like a rocket to the moon!!");
+    }
+}
+
+#endregion
+
+        // new
+public class ModelDuck : Duck
+{
+    public ModelDuck()
+    {
+        FlyBehaviour = new CantFly();
+        QuackBehaviour = new NoQuack();
+    }
+    public override void Display()
+    {
+        Console.WriteLine("I'm a model duck.");
+    }
+}
+public class Mallard : Duck
+{
+    public Mallard()
+    {
+        FlyBehaviour = new FlyWithWings();
+        QuackBehaviour = new LoudQuack();
+    }
+
+    public override void Display()
+    {
+        Console.WriteLine("Hey I'm a mallard Duck.");
+    }
+}
+
     }
 }
