@@ -2,7 +2,7 @@
 
 namespace WeatherStationIObservableT
 {
-    public sealed class HeatIndexDisplay : IObserver<WeatherInfo>, IDisplayElement
+    public class HeatIndexDisplay : IObserver<WeatherInfo>, IDisplayElement
     {
         private double _heatIndex;
         private IDisposable _unsubscriber;
@@ -15,14 +15,15 @@ namespace WeatherStationIObservableT
         // iObserver
         public void OnCompleted()
         {
-            // Do nothing.
+            // what should go here?
         }
 
         public void OnError(Exception error)
         {
-            // Do nothing.
+            // what should go here?
         }
 
+        // Subject calls this (update)
         public void OnNext(WeatherInfo weatherInfo)
         {
             _heatIndex = ComputeHeatIndex(weatherInfo.Temperature, weatherInfo.Humidity);

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 
 namespace WeatherStationIObservableT
 {
+
+    public class Blah : IObservable<WeatherInfo>
+    {
+        public IDisposable Subscribe(IObserver<WeatherInfo> observer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class WeatherData : IObservable<WeatherInfo> //Our Concerete Subject
     {
         // A mechanism that allows the provider to keep track of observers
@@ -69,13 +78,13 @@ namespace WeatherStationIObservableT
             }
         }
 
-        public void EndTransmission()
-        {
-            foreach (var observer in _observers.ToArray())
-                if (_observers.Contains(observer))
-                    observer.OnCompleted();
-            _observers.Clear();
-        }
+        //public void EndTransmission()
+        //{
+        //    foreach (var observer in _observers.ToArray())
+        //        if (_observers.Contains(observer))
+        //            observer.OnCompleted();
+        //    _observers.Clear();
+        //}
 
     }
 

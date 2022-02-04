@@ -7,6 +7,8 @@ namespace FlightObserver
     {
         static void Main(string[] args)
         {
+            // taken from Microsoft tutorial
+            //https://docs.microsoft.com/en-us/dotnet/standard/events/observer-design-pattern
             BaggageHandler provider = new BaggageHandler();
             ArrivalsMonitor observer1 = new ArrivalsMonitor("BaggageClaimMonitor1");
             ArrivalsMonitor observer2 = new ArrivalsMonitor("SecurityExit");

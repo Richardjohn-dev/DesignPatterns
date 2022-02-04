@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarBuzzDecorator", "StarBu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarBuzzDecoratorRefactored", "StarBuzzDecoratorRefactored\StarBuzzDecoratorRefactored.csproj", "{0430B70B-4838-41FE-916B-06B496861D90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightObserver", "FlightObserver\FlightObserver.csproj", "{B83DDE39-00BB-453F-B4A5-508126769B3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrosoftFlightObserver", "FlightObserver\MicrosoftFlightObserver.csproj", "{B83DDE39-00BB-453F-B4A5-508126769B3F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherStationIObservableT", "WeatherStationIObservableT\WeatherStationIObservableT.csproj", "{2A24C29C-1D82-40EF-BC52-AB9C5C518965}"
 EndProject
