@@ -18,21 +18,23 @@ namespace WeatherMonitorObserver
 
             weatherData.SetMeasurements(80, 65, 30.4f);
             weatherData.SetMeasurements(82, 70, 29.2f);
-            weatherData.SetMeasurements(78, 90, 29.2f);
 
+            weatherData.RegisterObserver(heatIndexDisplay);
+
+            weatherData.SetMeasurements(78, 90, 29.2f);
+           
             Console.ReadLine();
         }
 
         
     }
-
-
+      
     public class WeatherData : ISubject
     {
-        private  List<IObserver> _observers;
-        private  double _temperature;
-        private  double _humidity;
-        private  double _pressure;
+        private List<IObserver> _observers;
+        private double _temperature;
+        private double _humidity;
+        private double _pressure;
 
         public WeatherData()
         {
@@ -109,18 +111,18 @@ namespace WeatherMonitorObserver
         }
         public void Display()
         {
-            Console.WriteLine("Forecast: "); 
+            Console.WriteLine("Forecast: ");
             if (_currentPressure > _lastPressure)
             {
-               Console.WriteLine("Improving weather on the way!");
+                Console.WriteLine("Improving weather on the way!");
             }
             else if (_currentPressure == _lastPressure)
             {
-               Console.WriteLine("More of the same");
+                Console.WriteLine("More of the same");
             }
             else if (_currentPressure < _lastPressure)
             {
-               Console.WriteLine("Watch out for cooler, rainy weather");
+                Console.WriteLine("Watch out for cooler, rainy weather");
             }
 
         }
@@ -172,7 +174,7 @@ namespace WeatherMonitorObserver
     public class HeatIndexDisplay : IObserver, IDisplayElement
     {
         private readonly WeatherData _weatherData;
-        private double _heatIndex = 0.0f;      
+        private double _heatIndex = 0.0f;
 
         public HeatIndexDisplay(WeatherData weatherData)
         {
@@ -202,15 +204,11 @@ namespace WeatherMonitorObserver
         }
     }
 
-
-
-
     public interface ISubject
     {
         void RegisterObserver(IObserver o);
         void RemoveObserver(IObserver o);
         void NotifyObservers();
-
     }
 
     public interface IObserver
@@ -222,4 +220,5 @@ namespace WeatherMonitorObserver
     {
         void Display();
     }
+
 }
