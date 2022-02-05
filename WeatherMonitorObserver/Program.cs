@@ -29,53 +29,32 @@ namespace WeatherMonitorObserver
         
     }
       
-    public class WeatherData : ISubject
+public class WeatherData : ISubject
+{
+    private readonly List<IObserver> _observers; // our observers
+    private double _temperature, _humidity, _pressure; 
+    // the data our observers wants
+
+    public WeatherData()
     {
-        private List<IObserver> _observers;
-        private double _temperature;
-        private double _humidity;
-        private double _pressure;
-
-        public WeatherData()
-        {
-            _observers = new();
-        }
-
-
-        // from interface
-        public void NotifyObservers()
-        {
-            foreach (var o in _observers)
-            {
-                o.Update(_temperature, _humidity, _pressure);
-            }
-        }
-
-        public void RegisterObserver(IObserver o)
-        {
-            _observers.Add(o);
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            _observers.Remove(o);
-        }
-
-
-        // class methods
-        public void MeasurementsChanged()
-        {
-            NotifyObservers();
-        }
-
-        public void SetMeasurements(double temp, double humidity, double pressure)
-        {
-            this._temperature = temp;
-            this._humidity = humidity;
-            this._pressure = pressure;
-            MeasurementsChanged();
-        }
+        _observers = new();
+    }        
+    // Subject recieves new data        
+    public void SetMeasurements(double temp, double humidity, double pressure)
+    {
+        this._temperature = temp;
+        this._humidity = humidity;
+        this._pressure = pressure;
+        // and then sends out updates to its observers/subscribers
+        NotifyObservers();
     }
+
+    public void NotifyObservers()
+            => _observers.ForEach(o => o.Update(_temperature, _humidity, _pressure));
+    // This calls the Update() method from out Observers shared interface.
+    public void RegisterObserver(IObserver o) => _observers.Add(o);
+    public void RemoveObserver(IObserver o) => _observers.Remove(o);
+}
 
     public class CurrentConditionsDisplay : IObserver, IDisplayElement
     {
