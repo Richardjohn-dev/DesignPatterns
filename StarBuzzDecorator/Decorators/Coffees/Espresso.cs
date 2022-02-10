@@ -12,4 +12,17 @@
             return 1.99;
         }
     }
+
+    public class Tea : IBeverage
+    {
+        public double Cost()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string Description()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

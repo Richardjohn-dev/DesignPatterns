@@ -23,9 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarBuzzDecorator", "StarBu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarBuzzDecoratorRefactored", "StarBuzzDecoratorRefactored\StarBuzzDecoratorRefactored.csproj", "{0430B70B-4838-41FE-916B-06B496861D90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrosoftFlightObserver", "FlightObserver\MicrosoftFlightObserver.csproj", "{B83DDE39-00BB-453F-B4A5-508126769B3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrosoftFlightObserver", "FlightObserver\MicrosoftFlightObserver.csproj", "{B83DDE39-00BB-453F-B4A5-508126769B3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherStationIObservableT", "WeatherStationIObservableT\WeatherStationIObservableT.csproj", "{2A24C29C-1D82-40EF-BC52-AB9C5C518965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherStationIObservableT", "WeatherStationIObservableT\WeatherStationIObservableT.csproj", "{2A24C29C-1D82-40EF-BC52-AB9C5C518965}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorWithInterface", "DecoratorWithInterface\DecoratorWithInterface.csproj", "{4E7BE15B-0334-48E6-9888-E4E78DBB2390}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter4", "Chapter4", "{5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheFactoryPatternStart", "TheFactoryPatternStart\TheFactoryPatternStart.csproj", "{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,14 @@ Global
 		{2A24C29C-1D82-40EF-BC52-AB9C5C518965}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A24C29C-1D82-40EF-BC52-AB9C5C518965}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A24C29C-1D82-40EF-BC52-AB9C5C518965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E7BE15B-0334-48E6-9888-E4E78DBB2390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E7BE15B-0334-48E6-9888-E4E78DBB2390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E7BE15B-0334-48E6-9888-E4E78DBB2390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E7BE15B-0334-48E6-9888-E4E78DBB2390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +97,8 @@ Global
 		{0430B70B-4838-41FE-916B-06B496861D90} = {7A856D5F-9794-465C-B061-10CFE4FC868F}
 		{B83DDE39-00BB-453F-B4A5-508126769B3F} = {A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}
 		{2A24C29C-1D82-40EF-BC52-AB9C5C518965} = {A9184D0C-5842-4DD7-BA5A-6BF075D13C6C}
+		{4E7BE15B-0334-48E6-9888-E4E78DBB2390} = {7A856D5F-9794-465C-B061-10CFE4FC868F}
+		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}

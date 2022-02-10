@@ -6,25 +6,28 @@ namespace WeatherMonitorObserver
     class Program
     {
         // Chapter 2 Weather Observer Chapter
-        static void Main(string[] args)
-        {
+static void Main(string[] args)
+{
 
-            WeatherData weatherData = new();
+    WeatherData weatherData = new();
+    CurrentConditionsDisplay currentConditions = new(weatherData);
+    weatherData.SetMeasurements(80, 65, 30.4f);
+    Console.ReadLine();
 
-            CurrentConditionsDisplay currentConditions = new(weatherData);
-            StatisticsDisplay statisticsDisplay = new(weatherData);
-            ForecastDisplay forecastDisplay = new(weatherData);
-            HeatIndexDisplay heatIndexDisplay = new(weatherData);
 
-            weatherData.SetMeasurements(80, 65, 30.4f);
-            weatherData.SetMeasurements(82, 70, 29.2f);
+    //StatisticsDisplay statisticsDisplay = new(weatherData);
+    //ForecastDisplay forecastDisplay = new(weatherData);
+    //HeatIndexDisplay heatIndexDisplay = new(weatherData);
 
-            weatherData.RegisterObserver(heatIndexDisplay);
+    //weatherData.SetMeasurements(80, 65, 30.4f);
+    //weatherData.SetMeasurements(82, 70, 29.2f);
 
-            weatherData.SetMeasurements(78, 90, 29.2f);
+    //weatherData.RegisterObserver(heatIndexDisplay);
+
+    //weatherData.SetMeasurements(78, 90, 29.2f);
            
-            Console.ReadLine();
-        }
+    //Console.ReadLine();
+}
 
         
     }
@@ -33,13 +36,12 @@ public class WeatherData : ISubject
 {
     private readonly List<IObserver> _observers; // our observers
     private double _temperature, _humidity, _pressure; 
-    // the data our observers wants
+    // the data our observers want
 
     public WeatherData()
     {
         _observers = new();
     }        
-    // Subject recieves new data        
     public void SetMeasurements(double temp, double humidity, double pressure)
     {
         this._temperature = temp;
@@ -56,27 +58,30 @@ public class WeatherData : ISubject
     public void RemoveObserver(IObserver o) => _observers.Remove(o);
 }
 
-    public class CurrentConditionsDisplay : IObserver, IDisplayElement
+public class CurrentConditionsDisplay : IObserver, IDisplayElement
+{
+    private double _temperature;
+    private double _humidity;
+    public CurrentConditionsDisplay(WeatherData weatherData)
     {
-        private readonly WeatherData _weatherData; // not used, but probably used in the future to unregister
-        private double _temperature;
-        private double _humidity;
-        public CurrentConditionsDisplay(WeatherData weatherData)
-        {
-            _weatherData = weatherData;
-            weatherData.RegisterObserver(this);
-        }
-        public void Display()
-        {
-            Console.WriteLine($"Current conditions {_temperature} degrees and {_humidity}% humidity");
-        }
-        void IObserver.Update(double temp, double humidity, double pressure)
-        {
-            this._temperature = temp;
-            this._humidity = humidity;
-            Display();
-        }
+        // In this implementation, subject is passed in observers constructor.
+        // Then registered and added to the subjects list.
+        weatherData.RegisterObserver(this);
     }
+
+    // Subject loops through its list of observers and calls this function
+    void IObserver.Update(double temp, double humidity, double pressure)
+    {
+        this._temperature = temp;
+        this._humidity = humidity;
+        Display();
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Current conditions {_temperature} degrees and {_humidity}% humidity");
+    }
+}
 
     public class ForecastDisplay : IObserver, IDisplayElement
     {
@@ -105,6 +110,7 @@ public class WeatherData : ISubject
             }
 
         }
+        // Subject loops through its list of observers and calls this function
         void IObserver.Update(double temp, double humidity, double pressure)
         {
             this._lastPressure = _currentPressure;
@@ -131,6 +137,8 @@ public class WeatherData : ISubject
         {
             Console.WriteLine($"Avg/Max/Min temperature = { _tempSum / _numReadings } / { _maxTemp } / { _minTemp }");
         }
+
+        // Subject loops through its list of observers and calls this function
         void IObserver.Update(double temp, double humidity, double pressure)
         {
             _tempSum += temp;
