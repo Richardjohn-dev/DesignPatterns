@@ -1,4 +1,4 @@
-﻿namespace FactoryMethod2
+﻿namespace AbstractFactory
 {
 public class NewYorkCheese : Pizza
 {

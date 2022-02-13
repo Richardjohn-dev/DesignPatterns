@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FactoryMethod2
+namespace AbstractFactory
 {
 public abstract class Pizza
 {
