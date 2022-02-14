@@ -1,13 +1,21 @@
-﻿namespace AbstractFactory
+﻿using AbstractFactory.IngredientFactory;
+using AbstractFactory.Pizzas;
+
+namespace AbstractFactory
 {
-    public class NewYorkPizzaStore : PizzaStore
+public class NewYorkPizzaStore : PizzaStore
+{    
+    protected override Pizza CreatePizza(PizzaType pizzatype)
     {
-        protected override Pizza CreatePizza(PizzaType pizzatype) => pizzatype switch // have to implement abstract Method.
+        IPizzaIngredientFactory ingredientFactory = new NewYorkPizzaIngredientFactory();
+
+        return pizzatype switch
         {
-            PizzaType.Cheese => new NewYorkCheese(),
-            PizzaType.Veggie => new NewYorkVeggie(),
-            PizzaType.Peperoni => new NewYorkPeperoni(),
-            _ => new ChicagoCheesePizza(), // default to cheese
-        };
+            PizzaType.Cheese => new CheesePizza(ingredientFactory, PizzaType.Cheese),
+            PizzaType.Veggie => new VegetarianPizza(ingredientFactory, PizzaType.Veggie),
+            PizzaType.MeatFeast => new MeatFeastPizza(ingredientFactory, PizzaType.MeatFeast),
+            _ => new CheesePizza(ingredientFactory, PizzaType.Cheese), // default to cheese could be null
+        };         
     }
+}
 }

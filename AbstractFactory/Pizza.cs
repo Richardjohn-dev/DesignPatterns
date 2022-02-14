@@ -1,56 +1,75 @@
-﻿using System;
+﻿using AbstractFactory.Ingredients;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AbstractFactory
 {
-public abstract class Pizza
-{
-    public string Name { get; protected set; }
-    public string Dough { get; protected set; }
-    public string Sauce { get; protected set; }
-    public List<string> Toppings { get; protected set; } = new();
-
-    public void Prepare()
+    public abstract class Pizza
     {
-        Console.WriteLine($"Prepare {Name}");
-        Console.WriteLine("Tossing dough...");
-        Console.WriteLine("Adding sauce...");
-        Console.WriteLine("Adding toppings: ");
-        foreach (string topping in Toppings)
+        protected Pizza(PizzaType pizzatype)
         {
-            Console.WriteLine($"\t{topping}");
+            Name = pizzatype;
         }
-    }
-    public virtual void Bake()
-    {
-        Console.WriteLine("Bake for 25 minutes at 350");
-    }
-    public virtual void Cut()
-    {
-        Console.WriteLine("Cut the pizza into diagonal slices");
-    }
-    public void Box()
-    {
-        Console.WriteLine("Place pizza in official PizzaStore box");
-    }
+        public PizzaType Name { get; init; }
+        public IDough Dough { get; protected set; }
+        public ISauce Sauce { get; protected set; }
+        public List<IVegetableTopping> VegetableToppings { get; protected set; }
+        public List<IMeatTopping> MeatToppings { get; protected set; }
+        public List<ICheese> Cheeses { get; protected set; }
 
-    public string GetName()
-    {
-        return Name;
-    }
-    public override string ToString()
-    {
-        var displayName = new StringBuilder();
-        displayName.Append("---- ").Append(Name).Append(" ----\n");
-        displayName.Append(Dough).Append('\n');
-        displayName.Append(Sauce).Append('\n');
-        foreach (string topping in Toppings)
+        public abstract void Prepare();
+        public virtual void Bake()
         {
-            displayName.Append(topping).Append('\n');
+            Console.WriteLine("Bake for 25 minutes at 350");
+        }
+        public virtual void Cut()
+        {
+            Console.WriteLine("Cut the pizza into diagonal slices");
+        }
+        public void Box()
+        {
+            Console.WriteLine("Place pizza in official PizzaStore box");
         }
 
-        return displayName.ToString();
+        //public string GetName()
+        //{
+        //    return Name;
+        //}
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+
+            result.Append("---- ").Append(Name).Append(" ----\n");
+            if (Dough != null)
+            {
+                result.Append(Dough).Append('\n');
+            }
+
+            if (Sauce != null)
+            {
+                result.Append(Sauce).Append('\n');
+            }
+
+            if (Cheeses != null)
+            {
+                result.AppendJoin(", ", Cheeses);
+                result.Append('\n');
+            }
+
+            if (VegetableToppings != null)
+            {
+                result.AppendJoin(", ", VegetableToppings);
+                result.Append('\n');
+            }
+
+            if (MeatToppings != null)
+            {
+                result.AppendJoin(", ", MeatToppings);
+                result.Append('\n');
+            }
+
+            return result.ToString();
+        }
     }
-}
 }
