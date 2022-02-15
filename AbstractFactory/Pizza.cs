@@ -32,10 +32,6 @@ namespace AbstractFactory
             Console.WriteLine("Place pizza in official PizzaStore box");
         }
 
-        //public string GetName()
-        //{
-        //    return Name;
-        //}
         public override string ToString()
         {
             var result = new StringBuilder();

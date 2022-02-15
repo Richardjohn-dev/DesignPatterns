@@ -4,7 +4,7 @@ namespace TheFactoryPatternStart
 {
     class Program
     {
-        // stripped out the pizza store.. it was extra fluff that potentionally added confusion
+        // stripped out the pizza store wrapper/DI.. it was extra fluff that potentionally added confusion
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -17,12 +17,11 @@ namespace TheFactoryPatternStart
     public class SimplePizzaFactory
     {
         public Pizza CreatePizza(string type)
-        {
-            // Our Factory is Dependant on all these objects. (not great)
-            // If we want to make changes..this class is not closed for modification.
+        {           
             Pizza pizza;
             if (type.Equals("cheese"))
             {
+                // Our Factory is Dependant on all these objects. (not great)
                 pizza = new CheesePizza();
                 Console.WriteLine("Cheese pizza created!");
             }
@@ -30,7 +29,6 @@ namespace TheFactoryPatternStart
             {
                 pizza = new Peperoni();
                 Console.WriteLine("peperoni pizza created!");
-
             }
             else if (type.Equals("Meatfeast"))
             {
@@ -41,6 +39,7 @@ namespace TheFactoryPatternStart
             {
                 pizza = new CheesePizza();
             }
+            // If we want to make changes..this class is not closed for modification.
 
             return pizza;
         }
