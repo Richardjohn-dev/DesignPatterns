@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethod", "FactoryMet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{65F36391-8C8D-4C51-929C-3E5BBF95C99C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter5", "Chapter5", "{60944F09-5D7B-415A-8D07-3F87E8468ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheChocolateFactory", "TheChocolateFactory\TheChocolateFactory.csproj", "{5704258F-32F6-4525-9DCE-7A850D4C6E12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,10 @@ Global
 		{65F36391-8C8D-4C51-929C-3E5BBF95C99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65F36391-8C8D-4C51-929C-3E5BBF95C99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65F36391-8C8D-4C51-929C-3E5BBF95C99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +121,7 @@ Global
 		{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
 		{C2540A03-1352-4A32-AB64-00A0D5469522} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
 		{65F36391-8C8D-4C51-929C-3E5BBF95C99C} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
+		{5704258F-32F6-4525-9DCE-7A850D4C6E12} = {60944F09-5D7B-415A-8D07-3F87E8468ABD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}
