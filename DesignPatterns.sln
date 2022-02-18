@@ -31,15 +31,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorWithInterface", "D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter4", "Chapter4", "{5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFactory", "TheFactoryPatternStart\SimpleFactory.csproj", "{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleFactory", "TheFactoryPatternStart\SimpleFactory.csproj", "{6A405A0F-59A1-4C9F-8FD8-B0CC91CD21FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethod", "FactoryMethod2\FactoryMethod.csproj", "{C2540A03-1352-4A32-AB64-00A0D5469522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryMethod", "FactoryMethod2\FactoryMethod.csproj", "{C2540A03-1352-4A32-AB64-00A0D5469522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{65F36391-8C8D-4C51-929C-3E5BBF95C99C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{65F36391-8C8D-4C51-929C-3E5BBF95C99C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter5", "Chapter5", "{60944F09-5D7B-415A-8D07-3F87E8468ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheChocolateFactory", "TheChocolateFactory\TheChocolateFactory.csproj", "{5704258F-32F6-4525-9DCE-7A850D4C6E12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheChocolateFactory", "TheChocolateFactory\TheChocolateFactory.csproj", "{5704258F-32F6-4525-9DCE-7A850D4C6E12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingletonPluralsight", "SingletonPluralsight\SingletonPluralsight.csproj", "{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter6", "Chapter6", "{29C28212-57B9-40B3-BFF6-FE95D68BBE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteCommander", "RemoteCommander\RemoteCommander.csproj", "{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +109,14 @@ Global
 		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5704258F-32F6-4525-9DCE-7A850D4C6E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +136,8 @@ Global
 		{C2540A03-1352-4A32-AB64-00A0D5469522} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
 		{65F36391-8C8D-4C51-929C-3E5BBF95C99C} = {5BD0B512-DD0A-48F8-AA52-ECE6A0BFE863}
 		{5704258F-32F6-4525-9DCE-7A850D4C6E12} = {60944F09-5D7B-415A-8D07-3F87E8468ABD}
+		{BA13F2F9-A4AC-4EE5-A7E4-B67F0C17BA8A} = {60944F09-5D7B-415A-8D07-3F87E8468ABD}
+		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262} = {29C28212-57B9-40B3-BFF6-FE95D68BBE67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}
