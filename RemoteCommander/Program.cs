@@ -9,11 +9,11 @@ namespace RemoteCommander
             // test remote control
 
             SimpleRemoteControl remote = new(); // Invoker
-            Light light = new(); // reciever of the request
+            LightReceiver light = new(); // reciever of the request
             LightOnCommand lightOn = new LightOnCommand(light);
 
 
-            GarageDoor garageDoor = new(); // Receiver 2
+            GarageDoorReceiver garageDoor = new(); // Receiver 2
             GarageDoorOpenCommand openGarage = new GarageDoorOpenCommand(garageDoor);
 
             remote.SetCommand(lightOn); // Command (lightOn) passed to Invoker (remote)
@@ -32,7 +32,8 @@ namespace RemoteCommander
          public void Execute();
     }
 
-    public class Light
+
+    public class LightReceiver
     {
         public void On()
         {
@@ -48,9 +49,9 @@ namespace RemoteCommander
 
     public class LightOnCommand : ICommand
     {
-        private readonly Light _light;
+        private readonly LightReceiver _light;
 
-        public LightOnCommand(Light light)
+        public LightOnCommand(LightReceiver light)
         {
             _light = light;
         }
@@ -78,7 +79,7 @@ namespace RemoteCommander
    
 
     //
-    public class GarageDoor
+    public class GarageDoorReceiver
     {
         public void Up()
         {
@@ -105,9 +106,9 @@ namespace RemoteCommander
 
     public class GarageDoorOpenCommand : ICommand
     {
-        private readonly GarageDoor _garageDoor;
+        private readonly GarageDoorReceiver _garageDoor;
 
-        public GarageDoorOpenCommand(GarageDoor garageDoor)
+        public GarageDoorOpenCommand(GarageDoorReceiver garageDoor)
         {
             _garageDoor = garageDoor;
         }
