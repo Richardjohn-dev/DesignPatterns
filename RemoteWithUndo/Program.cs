@@ -1,18 +1,16 @@
 ﻿using System;
 
-namespace RemoteControlWithSlots
+namespace RemoteWithUndo
 {
     class Program
     {
         static void Main(string[] args)
         {
             var remoteControl = new RemoteControl();
+            // This would all be in its own RemoteLoader class.
 
-
-        // This would all be in its own RemoteLoader class.
-
-        // public class RemoteLoader
-        // {
+            // public class RemoteLoader
+            // {
             // Receivers
             var loungeLight = new Light("Living Room");
             var kitchenLight = new Light("Kitchen Room");
@@ -38,7 +36,7 @@ namespace RemoteControlWithSlots
             var garageDoorUpCommand = new GarageDoorOpenCommand(garageDoor);
             var garageDoorDownCommand = new GarageDoorCloseCommand(garageDoor);
 
-            var stereoOnWithCd = new StereoOnWithCdCommand(stereo); 
+            var stereoOnWithCd = new StereoOnWithCdCommand(stereo);
             var stereoOff = new StereoOffCommand(stereo);
 
 
@@ -51,7 +49,10 @@ namespace RemoteControlWithSlots
 
             // ToDo.. in the book they implement this using lambdas, removing the need for the above concrete class instantiation.
 
-           //remoteControl.SetCommand(5, new LightOnCommand() => loungelightOn(), () => loungeLight.Off());
+            //remoteControl.SetCommand(5, new LightOnCommand() => loungelightOn(), () => loungeLight.Off());
+
+            //var partyOnMacro = new MacroCommand(new ICommand[] {lightOn, stereoOnWithCd, fanOn});
+            //var partyOffMacro = new MacroCommand(new ICommand[] {lightOff, stereoOff, fanOff});
 
             // print whats in control
             Console.WriteLine(remoteControl);
@@ -72,9 +73,15 @@ namespace RemoteControlWithSlots
             remoteControl.PressOnButton(4);
             remoteControl.PressOffButton(4);
 
+            // remoteControl.PressUndoButton();
 
-         // }
+            //Console.WriteLine("--- Pushing Macro On ---");
+            //remoteControl.PressOnButton(3);
+            //Console.WriteLine("--- Pushing Macro Off ---");
+            //remoteControl.PressOffButton(3);
+            //Console.WriteLine("Hello World!");
 
+            // }
         }
     }
 }

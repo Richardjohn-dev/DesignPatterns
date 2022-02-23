@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RemoteControlWithSlots
+namespace RemoteWithUndo
 {
     public class GarageDoor
     {
