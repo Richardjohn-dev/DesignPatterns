@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteControlWithSlots", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteWithUndo", "RemoteWithUndo\RemoteWithUndo.csproj", "{2CE116AC-B3F4-4C83-B0C0-0897E160CC26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteControlMacroPartyMode", "RemoteControlPartyMode\RemoteControlMacroPartyMode.csproj", "{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{2CE116AC-B3F4-4C83-B0C0-0897E160CC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CE116AC-B3F4-4C83-B0C0-0897E160CC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CE116AC-B3F4-4C83-B0C0-0897E160CC26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,6 +158,7 @@ Global
 		{FCDE4D4C-443E-4FCD-B992-C2A9BC0AE262} = {29C28212-57B9-40B3-BFF6-FE95D68BBE67}
 		{4C22C26D-401B-46A5-9D6A-7828935B00E4} = {29C28212-57B9-40B3-BFF6-FE95D68BBE67}
 		{2CE116AC-B3F4-4C83-B0C0-0897E160CC26} = {29C28212-57B9-40B3-BFF6-FE95D68BBE67}
+		{630BF5F8-A9E5-4A2E-B5D9-68695E07BDE5} = {29C28212-57B9-40B3-BFF6-FE95D68BBE67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46BD1351-9E96-4B0F-8620-67E159CA050A}
