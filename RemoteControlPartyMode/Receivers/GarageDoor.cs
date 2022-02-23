@@ -10,6 +10,7 @@ namespace RemoteControlMacroPartyMode
         {
             _location = location;
         }
+
         public void Up()
         {
             Console.WriteLine("Garage Door is OPENING.");
@@ -19,14 +20,17 @@ namespace RemoteControlMacroPartyMode
         {
             Console.WriteLine("Garage Door CLOSING.");
         }
+
         public void Stop()
         {
             Console.WriteLine("Garage Door STOPPED.");
         }
+
         public void LightOn()
         {
             Console.WriteLine("Garage Door Lights are ON.");
         }
+
         public void LightOff()
         {
             Console.WriteLine("Garage Door Lights are OFF.");

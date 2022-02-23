@@ -8,10 +8,12 @@
         {
             _garageDoor = garageDoor;
         }
+
         public void Execute()
         {
             _garageDoor.Up();
         }
+
         public void Undo()
         {
             _garageDoor.Down();

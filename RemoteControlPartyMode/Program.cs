@@ -2,77 +2,45 @@
 
 namespace RemoteControlMacroPartyMode
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // -------------------------------------------
-            // ----   First Controller Test Start  - Simple Undo
+            var remoteControl = new RemoteControl();
 
-            //var remoteControl = new RemoteControl(); 
+            Light light = new Light("Living Room");
+            TV tv = new("Living Room");
+            Stereo stereo = new("Living Room");
+            Hottub hottub = new();
 
-            //var loungeLight = new Light("Living Room");
-            //var loungelightOn = new LightOnCommand(loungeLight);
-            //var loungelightOff = new LightOffCommand(loungeLight);
-            //remoteControl.SetCommand(0, loungelightOn, loungelightOff);
+            LightOnCommand lightOn = new LightOnCommand(light);
+            StereoOnCommand stereoOn = new StereoOnCommand(stereo);
+            TVOnCommand tvOn = new TVOnCommand(tv);
+            HottubOnCommand hottubOn = new HottubOnCommand(hottub);
+            LightOffCommand lightOff = new LightOffCommand(light);
+            StereoOffCommand stereoOff = new StereoOffCommand(stereo);
+            TVOffCommand tvOff = new TVOffCommand(tv);
+            HottubOffCommand hottubOff = new HottubOffCommand(hottub);
 
-            //// print whats in control
-            //Console.WriteLine(remoteControl);
+            ICommand[] partyOn = { lightOn, stereoOn, tvOn, hottubOn };
+            ICommand[] partyOff = { lightOff, stereoOff, tvOff, hottubOff };
 
-            //// INVOKER Time ()           
-            //remoteControl.PressOnButton(0);
-            //remoteControl.PressOffButton(0);
-            //// print whats in control
-            //Console.WriteLine(remoteControl);
-            //remoteControl.PressUndoButton();
-            //remoteControl.PressOffButton(0);
-            //remoteControl.PressOnButton(0);
-            //// print whats in control
-            //Console.WriteLine(remoteControl);
-            //remoteControl.PressUndoButton();
+            MacroCommand partyOnMacro = new MacroCommand(partyOn);
+            MacroCommand partyOffMacro = new MacroCommand(partyOff);
 
-            // 
-            //             First Controller Test End  
-            // -------------------------------------------
+            remoteControl.SetCommand(0, partyOnMacro, partyOffMacro);
 
-
-
+            Console.WriteLine(remoteControl);
+            Console.WriteLine("--- Pushing Macro On---");
+            remoteControl.PressOnButton(0);
+            Console.WriteLine("--- Pushing Macro Off---");
+            remoteControl.PressOffButton(0);
 
 
-
-
-            // -------------------------------------------
-            // ----------  Second controller Loaded - Ceiling Fan Test with Undo
-
-            //var remotecontrol = new remotecontrol();
-            //var ceilingfan = new ceilingfan("living room");
-            //var ceilingfanlowcommand = new ceilingfanlowcommand(ceilingfan);
-            //var ceilingfanmedcommand = new ceilingfanmediumcommand(ceilingfan);
-            //var ceilingfanhighcommand = new ceilingfanhighcommand(ceilingfan);
-            //var ceilingfanoffcommand = new ceilingfanoffcommand(ceilingfan);
-
-            //remotecontrol.setcommand(0, ceilingfanlowcommand, ceilingfanoffcommand);
-            //remotecontrol.setcommand(1, ceilingfanmedcommand, ceilingfanoffcommand);
-            //remotecontrol.setcommand(2, ceilingfanhighcommand, ceilingfanoffcommand);
-
-
-            ////// invoker time ()           
-            //remotecontrol.pressonbutton(0);
-            //remotecontrol.pressoffbutton(0);
-            //console.writeline(remotecontrol);
-            //remotecontrol.pressundobutton();
-
-            //remotecontrol.pressonbutton(1);
-            //console.writeline(remotecontrol);
-            //remotecontrol.pressundobutton();
-
-            //remotecontrol.pressonbutton(2);
-            //console.writeline(remotecontrol);
-            //remotecontrol.pressundobutton();
-
-            //// 
-            ////             second controller test end  
-            //// -------------------------------------------
+            Console.WriteLine("--- Pushing Macro On---");
+            remoteControl.PressOnButton(0);
+            Console.WriteLine("--- Pushing Undo---");
+            remoteControl.PressUndoButton();
         }
     }
 }

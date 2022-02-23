@@ -10,6 +10,7 @@ namespace RemoteControlMacroPartyMode
         {
             _location = location;
         }
+
         public void On()
         {
             Console.WriteLine($"{_location} Lights are ON.");
@@ -19,6 +20,5 @@ namespace RemoteControlMacroPartyMode
         {
             Console.WriteLine($"{_location} Lights are OFF.");
         }
-
     }
 }

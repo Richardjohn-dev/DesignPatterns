@@ -8,6 +8,7 @@
         {
             _light = light;
         }
+
         public void Execute()
         {
             _light.On();

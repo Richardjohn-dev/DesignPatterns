@@ -4,6 +4,7 @@
     {
         private readonly CeilingFan _ceilingFan;
         private FanSpeed _previousSpeed;
+
         public CeilingFanOffCommand(CeilingFan ceilingFan)
         {
             _ceilingFan = ceilingFan;
@@ -14,6 +15,7 @@
             _previousSpeed = _ceilingFan.GetSpeed();
             _ceilingFan.Off();
         }
+
         public void Undo()
         {
             switch (_previousSpeed)

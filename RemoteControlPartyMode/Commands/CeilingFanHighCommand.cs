@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RemoteControlMacroPartyMode
+﻿namespace RemoteControlMacroPartyMode
 {
     public class CeilingFanHighCommand : ICommand
     {
@@ -15,12 +9,13 @@ namespace RemoteControlMacroPartyMode
         {
             _ceilingFan = ceilingFan;
         }
+
         public void Execute()
         {
             _previousSpeed = _ceilingFan.GetSpeed();
             _ceilingFan.High();
         }
-        
+
         public void Undo()
         {
             switch (_previousSpeed)
