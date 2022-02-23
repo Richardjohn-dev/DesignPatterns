@@ -1,10 +1,17 @@
-﻿namespace RemoteWithUndo
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RemoteWithUndo
 {
-    public class CeilingFanOffCommand : ICommand
+    public class CeilingFanLowCommand : ICommand
     {
         private readonly CeilingFan _ceilingFan;
         private FanSpeed _previousSpeed;
-        public CeilingFanOffCommand(CeilingFan ceilingFan)
+
+        public CeilingFanLowCommand(CeilingFan ceilingFan)
         {
             _ceilingFan = ceilingFan;
         }
@@ -12,8 +19,9 @@
         public void Execute()
         {
             _previousSpeed = _ceilingFan.GetSpeed();
-            _ceilingFan.Off();
+            _ceilingFan.Low();
         }
+
         public void Undo()
         {
             switch (_previousSpeed)

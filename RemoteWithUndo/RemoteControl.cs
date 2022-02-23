@@ -6,7 +6,7 @@ namespace RemoteWithUndo
     {
         private readonly ICommand[] _offCommands;
         private readonly ICommand[] _onCommands;
-        //private ICommand _undoCommand;
+        private ICommand _undoCommand;
 
         public RemoteControl()
         {
@@ -20,7 +20,7 @@ namespace RemoteWithUndo
                 _offCommands[i] = noCommand;
             }
 
-           // _undoCommand = noCommand;
+            _undoCommand = noCommand;
         }
 
         public void SetCommand(int slot, ICommand onCommand, ICommand offCommand)
@@ -32,19 +32,19 @@ namespace RemoteWithUndo
         public void PressOnButton(int slot)
         {
             _onCommands[slot].Execute();
-           // _undoCommand = _onCommands[slot];
+            _undoCommand = _onCommands[slot];
         }
 
         public void PressOffButton(int slot)
         {
             _offCommands[slot].Execute();
-            //_undoCommand = _offCommands[slot];
+            _undoCommand = _offCommands[slot];
         }
 
-        //public void PressUndoButton()
-        //{
-        //    _undoCommand.Undo();
-        //}
+        public void PressUndoButton()
+        {
+            _undoCommand.Undo();
+        }
 
         public override string ToString()
         {
@@ -63,9 +63,9 @@ namespace RemoteWithUndo
                     .Append('\n');
             }
 
-            //stringBuilder.Append("[undo] ")
-            //    .Append(_undoCommand.GetType().Name)
-            //    .Append('\n');
+            stringBuilder.Append("[undo] ")
+                .Append(_undoCommand.GetType().Name)
+                .Append('\n');
 
             return stringBuilder.ToString();
         }
